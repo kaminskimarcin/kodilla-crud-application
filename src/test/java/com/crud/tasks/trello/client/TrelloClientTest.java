@@ -2,7 +2,6 @@ package com.crud.tasks.trello.client;
 
 import com.crud.tasks.domain.*;
 import com.crud.tasks.trello.config.TrelloConfig;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -81,17 +80,17 @@ public class TrelloClientTest {
         AttachmentsByTypeDto attachmentsByType = new AttachmentsByTypeDto(trello);
         BadgesDto badges = new BadgesDto(1,attachmentsByType);
 
-        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
                 "1",
                 "Task task",
                 "http://test.com",
                 badges
         );
 
-        when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
+        when(restTemplate.postForObject(uri, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
 
         //When
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         //Than
         assertEquals("1", newCard.getId());
@@ -110,7 +109,7 @@ public class TrelloClientTest {
         );
 
         //When
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         //Then
         assertEquals(null, newCard);
