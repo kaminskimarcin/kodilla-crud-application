@@ -117,5 +117,9 @@ public class TrelloFacadeTest {
         CreatedTrelloCardDto testedTrelloCard = trelloFacade.createCard(trelloCardDto);
         //Then
         assertEquals(createdTrelloCardDto.getId(), testedTrelloCard.getId());
+        assertEquals(createdTrelloCardDto.getName(), testedTrelloCard.getName());
+        assertEquals(createdTrelloCardDto.getShortUrl(), testedTrelloCard.getShortUrl());
+        assertEquals(createdTrelloCardDto.getBadges().getVotes(), testedTrelloCard.getBadges().getVotes());
+        assertEquals(createdTrelloCardDto.getBadges().getAttachments().getTrelloDto().getBoard(), testedTrelloCard.getBadges().getAttachments().getTrelloDto().getBoard());
     }
 }
