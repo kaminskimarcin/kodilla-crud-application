@@ -27,7 +27,7 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     @Scheduled(cron = "0 0 10 * * *")
-    @Scheduled(fixedDelayString = "10000")
+    @Scheduled(fixedDelayString = "10000000000")
     public void sendInformationEmail() {
         LOGGER.info("Sending email...");
         String task = taskRepository.count() == 1 ? "task" : "tasks";
